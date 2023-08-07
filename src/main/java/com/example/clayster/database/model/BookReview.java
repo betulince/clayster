@@ -6,17 +6,17 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-
-@Entity
 @Data
-@Table(name = "book-review")
+@Document(collection = "book-review")
 @NoArgsConstructor
 @AllArgsConstructor
 public class BookReview {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long reviewId;
-    private Long bookId;
+    private String reviewId;
+    @ManyToOne
+    @JoinColumn(name = "bookId")
+    private Book book;
     private String userName;
     private String review;
     private Rating starRating;
