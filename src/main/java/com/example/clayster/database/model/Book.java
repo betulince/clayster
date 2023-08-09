@@ -1,12 +1,9 @@
 package com.example.clayster.database.model;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.ArrayList;
@@ -22,7 +19,6 @@ public class Book {
     private String bookName;
     private String authorName;
     private String description;
-    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
     private List<BookReview> reviews= new ArrayList<>();
     private int year;
 

@@ -1,9 +1,9 @@
 package com.example.clayster.database.model;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
@@ -12,10 +12,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @AllArgsConstructor
 public class BookReview {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private String reviewId;
-    @ManyToOne
-    @JoinColumn(name = "bookId")
     private Book book;
     private String userName;
     private String review;

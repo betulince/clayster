@@ -1,5 +1,6 @@
 logging:
   level:
+    org.springframework.data.mongodb.core: DEBUG
     root: INFO
     org.springframework: INFO
     com.example: DEBUG
@@ -9,5 +10,3 @@ spring:
       host: localhost
       port: 27017
       database: clayster
-      username: admin
-      password: password
