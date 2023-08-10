@@ -2,6 +2,7 @@ package com.example.clayster.controller;
 
 import com.example.clayster.database.model.Book;
 import com.example.clayster.database.repository.BookRepository;
+import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,8 +22,8 @@ public class BooksController {
     }
 
     @GetMapping("/book-details/{bookId}")
-    public ResponseEntity<String> getBook(@PathVariable String bookId) {
-        Optional<Book> book = bookRepository.findById(bookId);
+    public ResponseEntity<String> getBook(@PathVariable final @NonNull String bookId) {
+        Optional<Book> book = bookRepository.findById(bookId).blockOptional();
         if (book.isPresent()) {
             log.info("Getting book with ID: {}", bookId);
             return ResponseEntity.ok(book.get().getBookName());
@@ -35,7 +36,7 @@ public class BooksController {
     @PostMapping("/books/add")
     public Book addNewBook(@RequestBody Book book) {
         log.info("Adding new book to the list");
-        return bookRepository.save(book);
+        return bookRepository.save(book).block();
     }
 
 }

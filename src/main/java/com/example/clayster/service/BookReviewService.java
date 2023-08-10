@@ -22,7 +22,7 @@ public class BookReviewService {
     }
 
     public List<BookReview> getAllTheReviews(String bookId) {
-        Optional<Book> book = bookRepository.findById(bookId);
+        final var book = bookRepository.findById(bookId).blockOptional();
         if (book.isPresent()) {
             return book.get().getReviews();
         } else {
