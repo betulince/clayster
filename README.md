@@ -46,8 +46,16 @@ This is a personalized library application built using Spring Boot, Java, MongoD
 ## Future Enhancements
 
 In the future, the following enhancements are planned:
-- Integration with Apache Kafka for real-time updates and event-driven architecture
+
 - Book recommendation engine based on user reading history and preferences
+- Integration with Apache Kafka for real-time updates and event-driven architecture
+- Decomposition of the application
+  
+# Book Management Service:
+This microservice will be responsible for managing user-owned books. It will handle operations like adding, deleting, updating the status of books, and keeping track of users' bookshelves. Additionally, this service can provide functionalities like categorizing books, setting reading status (e.g., "To Read," "Reading," "Read"), and adding personal notes or reviews for each book. It can also emit events when users update their bookshelves, such as adding a new book or changing the reading status. Other microservices can subscribe to these events to keep their data in sync.
+
+# Recommendation Engine Service:
+The recommendation engine microservice will analyze users' reading history, preferences, and interactions to generate personalized book recommendations. It can use collaborative filtering, content-based filtering, or machine learning algorithms to suggest books to users. This microservice can periodically generate and store these recommendations and also send out weekly recommendation emails to users. It may listen for events from the Book Management Service to keep track of changes in user reading behavior and adjust its recommendations accordingly.
 
 ## Contributing
 
